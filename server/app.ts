@@ -1,6 +1,7 @@
 const fs = require('fs')
 const express = require('express')
 const app = express()
+require('./api/lang.ts')
 
 const socketPath = 'app.sock'
 
