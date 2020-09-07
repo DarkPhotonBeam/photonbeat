@@ -108,5 +108,6 @@ dist
 
 server/node_modules/
 client/node_modules/
+bin/node_modules/
 client/build/
 production/
