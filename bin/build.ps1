@@ -7,6 +7,12 @@ yarn build
 
 Write-Host "React build done." -ForegroundColor Green
 
+# Compile Typescript Files
+Write-Host "`nCompling typescript files..." -ForegroundColor Cyan
+Set-Location "./../server"
+tsc
+Write-Host "Compiled typescript files." -ForegroundColor Green
+
 # Copy files
 Write-Host "`nCopying files..." -ForegroundColor Cyan
 Set-Location "./.."
