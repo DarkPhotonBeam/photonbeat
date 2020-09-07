@@ -28,20 +28,37 @@ BgWhite = "\x1b[47m"
 
  */
 
-const fs = require('fs')
-const { exec } = require('child_process')
-
-console.log('\x1b[34m%s\x1b[0m', 'Building optimized production build...')
-
-exec('cd ../client && npm run build', (error, stdout, stderr) => {
-    if (error) {
-        console.error(`Error: ${error.message}`)
-        return
-    }
-    if (stderr) {
-        console.error(`Stderr: ${stderr}`)
-        return
-    }
-    console.log(stdout)
-})
+// const fs = require('fs')
+// const { exec } = require('child_process')
+//
+// console.log('\x1b[34m%s\x1b[0m', 'Building optimized production build...')
+//
+// exec('cd ../client && yarn build', (error, stdout, stderr) => {
+//     if (error) {
+//         console.error(`Error: ${error.message}`)
+//         return
+//     }
+//     if (stderr) {
+//         console.error(`Stderr: ${stderr}`)
+//     }
+//     console.log(stdout)
+//     console.log('\x1b[32m%s\x1b[0m', 'React build done.')
+//     console.log('\x1b[34m%s\x1b[0m', 'Copying files to ./production...')
+//     exec('xcopy /s /v "..\\server" "..\\production"', (error, stdout, stderr) => {
+//         if (error) {
+//             console.error(`Error: ${error.message}`)
+//             return
+//         }
+//         if (stderr) {
+//             console.error(`Stderr: ${stderr}`)
+//             return
+//         }
+//         console.log(stdout)
+//         console.log('\x1b[32m%s\x1b[0m', 'React build done.')
+//         console.log('\x1b[34m%s\x1b[0m', 'Copying files to ./production...')
+//
+//     })
+// })
+//
+//
 
