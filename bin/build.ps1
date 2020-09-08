@@ -29,6 +29,11 @@ Write-Host "`nCopied server files." -ForegroundColor Yellow
 Copy-Item -Path "./client/build" -Destination './production' -Recurse
 Write-Host "Copied client files." -ForegroundColor Yellow
 
+## Rename build folder to public
+Set-Location ./production
+Rename-Item -Path "build" -NewName "public" -Force
+Write-Host "Renamed build to public." -ForegroundColor Yellow
+
 # Go back to origin
-Set-Location ./bin
+Set-Location ../bin
 Write-Host "`nYay! Production build done." -ForegroundColor Green

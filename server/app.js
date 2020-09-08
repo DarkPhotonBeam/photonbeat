@@ -5,7 +5,7 @@ var app = express();
 var ENV = process.env.NODE_ENV || 'development';
 var port = 3030;
 var socketPath = 'app.sock';
-if (ENV === 'production') {
+if (ENV !== 'development') {
     try {
         if (fs.existsSync(socketPath))
             fs.unlinkSync(socketPath);
@@ -14,8 +14,6 @@ if (ENV === 'production') {
         console.error(err);
     }
 }
-app.use(express.static(path.join(__dirname, 'build')));
-console.log("React Path: " + path.join(__dirname, 'build'));
 app.get('/api/test', function (req, res) {
     var response = {
         hello: 666
@@ -23,19 +21,17 @@ app.get('/api/test', function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     res.json(response);
 });
-app.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build/index.html'));
-});
-app.listen(ENV === 'production' ? socketPath : port, function (err) {
+app.listen(ENV !== 'development' ? socketPath : port, function (err) {
     if (err) {
         console.error(err);
     }
     else {
-        if (ENV === 'production') {
+        if (ENV !== 'development') {
             fs.chmodSync(socketPath, '0777');
-            console.log('Listening on ' + socketPath, 'color: #4422ee');
+            console.log('Listening on ' + socketPath);
         }
         else {
+            console.log('Listening on port sees');
         }
     }
 });
