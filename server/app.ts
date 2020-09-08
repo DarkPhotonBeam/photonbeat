@@ -18,18 +18,21 @@ if (ENV === 'production') {
     }
 }
 
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'build')))
+//app.use(express.static(path.join(__dirname, 'build/static')))
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname+'/build/index.html'))
-})
 
-app.get('/test', (req, res) => {
+console.log(`React Path: ${path.join(__dirname, 'build')}`)
+app.get('/api/test', (req, res) => {
     let response = {
-        hello: 444
+        hello: 666
     }
     res.setHeader('Content-Type', 'application/json')
-    res.send(JSON.stringify(response))
+    res.json(response)
+})
+
+app.get('/*', (req, res) => { // Has to be at bottom
+    res.sendFile(path.join(__dirname, 'build/index.html'))
 })
 
 app.listen(ENV === 'production' ? socketPath : port, (err) => {
