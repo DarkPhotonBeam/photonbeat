@@ -4,7 +4,7 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "start": "node --inspect=5858 -r ts-node/register app.ts",
+    "start": "node --inspect=5858 -r ts-node/register app.js",
     "start:watch": "nodemon",
     "build": "tsc"
   },
