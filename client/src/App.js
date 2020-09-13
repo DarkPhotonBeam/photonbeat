@@ -1,8 +1,17 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {BrowserRouter, Link, Route, Switch} from "react-router-dom";
+import axios from 'axios';
 
 function App() {
+    useEffect(() => {
+        axios.get('/api/test').then(res => {
+            console.log(res);
+        }).catch(err => {
+            console.error(err);
+        });
+    }, [])
+
     return (
         <div className="App">
             <BrowserRouter>

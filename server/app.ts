@@ -1,6 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 const express = require('express')
+//const bodyParser = require('body-parser')
 const app = express()
 
 const ENV = process.env.NODE_ENV || 'development'
@@ -17,6 +18,14 @@ if (ENV !== 'development') {
     }
 }
 
+// Middleware
+// const logger = (request, response, next) => {
+//     console.log(`${request.method} ${request.path}`)
+// }
+//
+// app.use(logger)
+//app.use(bodyParser)
+
 app.get('/api/test', (req, res) => {
     let response = {
         hello: 666
@@ -24,6 +33,7 @@ app.get('/api/test', (req, res) => {
     res.setHeader('Content-Type', 'application/json')
     res.json(response)
 })
+
 
 app.listen(ENV !== 'development' ? socketPath : port, (err) => {
     if (err) {
