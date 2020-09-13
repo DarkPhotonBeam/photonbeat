@@ -4,21 +4,19 @@
   "main": "app.js",
   "license": "MIT",
   "scripts": {
-    "start": "node --inspect=5858 -r ts-node/register app.js",
-    "start:watch": "nodemon",
+    "start": "nodemon app.js",
     "build": "tsc"
   },
   "nodemonConfig": {
     "ignore": [
-      "**/*.test.ts",
-      "**/*.spec.ts",
+      "**/*.test.js",
+      "**/*.spec.js",
       ".git","node_modules"
     ],
     "watch": [
       "./"
     ],
-    "exec": "npm start",
-    "ext": "ts"
+    "ext": "js"
   },
   "dependencies": {
     "express": "^4.17.1"

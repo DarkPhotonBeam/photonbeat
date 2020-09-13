@@ -17,11 +17,14 @@ function App() {
             <BrowserRouter>
                 <Link to="/">Home</Link>
                 <Link to="/test">Test</Link>
+                <Link to="/damnboy">Damn</Link>
                 <Link to="/about">About</Link><br /><br />
                 <Switch>
                     <Route exact path="/">Hauptseite</Route>
                     <Route path="/test">Testseite</Route>
+                    <Route path="/damnboy">Boyboyboy</Route>
                     <Route path="/about">Über beat.photonbeam.ch</Route>
+                    <Route>404 Error - Page not found</Route>
                 </Switch>
             </BrowserRouter>
         </div>

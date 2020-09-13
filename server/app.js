@@ -1,12 +1,7 @@
-// const fs = require('fs')
-// const path = require('path')
-// const express = require('express')
-// //const bodyParser = require('body-parser')
-// const app = express()
-import * as fs from 'fs'
-import * as path from 'path'
-import * as express from 'express'
-import * as bodyParser from 'body-parser'
+const fs = require('fs')
+const path = require('path')
+const express = require('express')
+//const bodyParser = require('body-parser')
 const app = express()
 
 const ENV = process.env.NODE_ENV || 'development'
@@ -23,19 +18,19 @@ if (ENV !== 'development') {
     }
 }
 
-// Middleware
-// const logger = (request, response, next) => {
-//     console.log(`${request.method} ${request.path}`)
-// }
-//
-// app.use(logger)
+//Middleware
+const logger = (request, response, next) => {
+    console.log(`\x1b[33m${request.method}\x1b[0m ${request.path} from ${request.headers['x-forwarded-for'] || request.connection.remoteAddress}`)
+    next()
+}
+
+app.use(logger)
 //app.use(bodyParser)
 
 app.get('/api/test', (req, res) => {
     let response = {
         hello: 666
     }
-    res.setHeader('Content-Type', 'application/json')
     res.json(response)
 })
 
@@ -50,10 +45,10 @@ app.listen(ENV !== 'development' ? socketPath : port, (err) => {
             // Set socket permissions
             fs.chmodSync(socketPath, '0777')
 
-            console.log('Listening on ' + socketPath)
+            console.log('\x1b[36mListening on ' + socketPath + '\x1b[0m\n')
         } else {
             // Development
-            console.log('Listening on port sees')
+            console.log('\x1b[36mListening on port ' + port + '\x1b[0m\n')
         }
     }
 })
