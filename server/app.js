@@ -4,7 +4,7 @@ const express = require('express')
 const dotenv = require('dotenv')
 const mysql = require('mysql')
 const crypto = require('crypto')
-//const bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 const app = express()
 dotenv.config()
 
@@ -31,7 +31,7 @@ const logger = (request, response, next) => {
 }
 
 app.use(logger)
-//app.use(bodyParser)
+app.use(bodyParser.json())
 
 app.get('/api/test', (req, res) => {
     let response = {
@@ -56,10 +56,6 @@ app.listen(ENV !== 'development' ? socketPath : port, (err) => {
             // Development
             console.log('\x1b[36mListening on port ' + port + '\x1b[0m\n')
         }
-
-        const salt = 'd737375ac56b0896';
-        const hash = '1578e824a7d9f4ea0c1590e47e8df3033252319cf68597a6fb8394658cb815cc05293c67aff323aed5f0d8ada146c017dafe883c6dcffcd9a2bb748790554de8';
-
 
         // Test hash
         console.log(sha512('test1234', salt).passwordHash === hash)
